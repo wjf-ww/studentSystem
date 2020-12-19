@@ -1,0 +1,35 @@
+package com.javabeans;
+
+import java.io.Serializable;
+
+public class Cc {
+	private String classno;//°à¼¶±àºÅ
+	private String classname;//°à¼¶Ãû³Æ
+	private String cno;//¿Î³Ì±àºÅ
+	private String cname;//¿Î³ÌÃû³Æ
+	public String getClassno() {
+		return classno;
+	}
+	public void setClassno(String classno) {
+		this.classno = classno;
+	}
+	public String getClassname() {
+		return classname;
+	}
+	public void setClassname(String classname) {
+		this.classname = classname;
+	}
+	public String getCno() {
+		return cno;
+	}
+	public void setCno(String cno) {
+		this.cno = cno;
+	}
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+}
+
