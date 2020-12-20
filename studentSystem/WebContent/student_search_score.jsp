@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="student" class="com.javabeans.Student" scope="session"></jsp:useBean>
-<%@ page import="java.util.*,com.javabeans.Score"%>
+<%@ page import="java.util.*,com.javabeans.*"%>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -43,19 +43,35 @@
 							<li class="active"><a href="student_search_credit.jsp">成绩查询</a></li>
 							<li><a href="student_search_credit.jsp">课程和学分查询</a></li>
 						</ul></li>
+						<li><a href="stu_search_course.jsp" class="icon-search">课程查询</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="admin">
-
+		<%
+				
+				ArrayList<String> courseTermList = (ArrayList<String>) session.getAttribute("courseTermList");
+			%>
 					<form action="SearchScoreServlet" method="post">
 						<div class="panel-body text-center">
-							学期： <select name="term">
-								<option value="2020-2021(1)">2020-2021(1)</option>
-								<option value="2020-2021(2)">2020-2021(2)</option>
-								
-							</select>
+							学期：学期：  <select name="term">
+									
+									<%
+										if(courseTermList != null && courseTermList.size() != 0 ){
+											for(String term : courseTermList){	
+										
+									%>
+									
+										<option value=<%=term %>><%=term %></option>
+									
+											
+									<%
+											}
+										}
+									%>
+											
+										</select> &nbsp; &nbsp; &nbsp; &nbsp;
 						</div>
 						
 						<input name="sno" type="hidden"

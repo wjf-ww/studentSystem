@@ -43,6 +43,9 @@
 							<li><a href="student_search_score.jsp">成绩查询</a></li>
 							<li class="active"><a href="student_search_credit.jsp">课程和学分查询</a></li>
 						</ul></li>
+						<li>
+						<a href="stu_search_course.jsp" class="icon-search">课程查询</a>
+					</li>
 				</ul>
 			</div>
 			

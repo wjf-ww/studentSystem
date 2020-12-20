@@ -21,7 +21,10 @@
 
 <body>
 	<div class="lefter">
-
+		<div class="logo">
+			<a href="login.jsp" target="_blank"><img src="images/logo.png"
+				alt="登录系统" /></a>
+		</div>
 	</div>
 	<div class="righter nav-navicon" id="admin-nav">
 		<div class="mainer">
@@ -44,42 +47,55 @@
             	</li>
             	<li ><a href="search_student_area.jsp" >查询学生信息</a></li>
             	<li  ><a href="search_techer.jsp" >查询老师信息</a></li>
-            	<li class="active" ><a href="search_class.jsp" >查询班级信息</a></li>
-            	<li ><a href="search_course.jsp" class="icon-search">课程查询</a></li>
-            	<li><a href="manager_password.jsp" >修改密码</a></li>
+            	<li ><a href="search_class.jsp" >查询班级信息</a></li>
+            	<li class="active"><a href="search_course.jsp" class="icon-search">课程查询</a></li>
+            	<li><a href="manager_password.jsp" class="icon-user">修改密码</a></li>
             </ul> 
 			</div>
 
 
 			<div class="admin">
 				<div class="admin-bread">
-					<form action="ClassDetailServlet" method="post">
+					<form action="CourseDetailServlet" method="post">
 						<div class="panel-foot bg-back border-back" align="left">
-					
+							教师编号：<input type="text" name="tno">
+							教师名字：<input type="text" name="tname">
+							任课班级：<input type="text" name="cno">
+							<input type = "hidden" name = "hide" value="course">
 							<button class="button bg-main" type="submit">查询</button>
 						</div>
 					</form>
 
 					<div class="panel">
-	
+						<div class="panel-head">
+							<strong>教师任课查询</strong>
+						</div>
 						<table class="table">
 							<tr>
-								<th>班级编号</th>
-								<th>班级名称</th>
-								<th>专业</th>
-							
-								
+								<th>课程编号</th>
+								<th>课程名称</th>
+								<th>学期</th>
+								<th>学时</th>
+								<th>考查方式</th>
+								<th>学分</th> &nbsp; &nbsp; &nbsp;
+								<th>老师职工号</th>
+								<th>任课老师</th>
+
 							</tr>
 							<%
-								ArrayList<Classes> classList = (ArrayList<Classes>) session.getAttribute("classList");
-								if (classList != null) {
-									for (Classes clas:classList) {
+								ArrayList<Course> courseList = (ArrayList<Course>) session.getAttribute("courseList");
+								if (courseList != null) {
+									for (Course course:courseList) {
 							%>
 							<tr>
-								<td align="left"><%=clas.getClassno()%></td>
-								<td align="left"><%=clas.getClassname()%></td>
-								<td align="left"><%=clas.getCmajor()%></td>
-							
+								<td align="left"><%=course.getCcno()%></td>
+								<td align="left"><%=course.getCcname()%></td>
+								<td align="left"><%=course.getCterm()%></td>
+								<td align="left"><%=course.getCtime()%></td>
+								<td align="left"><%=course.getCexam()%></td>
+								<td align="left"><%=course.getCcredit()%></td>
+								<td align="left"><%=course.getTno()%></td>
+								<td align="left"><%=course.getTname()%></td>
 							</tr>
 							<%
 								}

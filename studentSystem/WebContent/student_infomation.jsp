@@ -32,11 +32,14 @@
            		 <li class="active"><a href="student_infomation.jsp" > 学生管理</a>
             		<ul><li class="active"><a href="student_infomation.jsp">学生信息</a></li><li><a href="student_password.jsp">修改密码</a></li></ul>
                 </li>
-                <li><a href="student_search_score.jsp"
-						> 学生查询</a>
-						<ul>
-							<a href="student_search_score.jsp">成绩查询</a></li>
-							<li><a href="student_search_credit.jsp">课程和学分查询</a></li>
+                <li><a href="student_search_score.jsp"> 学生查询</a>
+							<ul>
+							<li><a href="student_search_score.jsp">成绩查询</a></li>
+							<li><a href="student_search_credit.jsp">课程和学分查询</a></li></ul>
+							</li>
+				<li>
+						<a href="stu_search_course.jsp" class="icon-search">课程查询</a>
+					</li>
 						</ul>
 						</div>
 						

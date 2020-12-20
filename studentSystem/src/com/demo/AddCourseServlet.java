@@ -20,12 +20,10 @@ public class AddCourseServlet extends HttpServlet {
 		UserDao dao = new UserDao();
 		Course course = new Course();
 		String message=null;
-		String cno = request.getParameter("classno");
-		String tno = request.getParameter("tno");
-		
 		try{
 			course.setCcno(request.getParameter("ccno"));
 			course.setCcname(request.getParameter("ccname"));
+			course.setTname(request.getParameter("tname"));
 			course.setTno(request.getParameter("tno"));
 			course.setCterm(request.getParameter("cterm"));
 			course.setClassNo(request.getParameter("classno"));

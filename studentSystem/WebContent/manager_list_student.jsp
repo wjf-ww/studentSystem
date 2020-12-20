@@ -48,6 +48,7 @@
             	    <li><a href="manager_delete_class.jsp">删除班级</a></li>
             	    <li><a href="manager_delete_course.jsp">删除课程</a></li></ul></li>
             	<li ><a href="search_student_area.jsp" >查询学生信息</a></li>
+            	
             	<li><a href="manager_password.jsp" >修改密码</a></li>
             </ul> 
 			</div>

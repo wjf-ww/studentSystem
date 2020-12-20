@@ -44,6 +44,7 @@
             	<li><a href="search_student_area.jsp" >查询学生信息</a></li>
             	<li><a href="search_techer.jsp" >查询老师信息</a></li>
             	<li  ><a href="search_class.jsp" >查询班级信息</a></li>
+            	<li ><a href="search_course.jsp" class="icon-search">课程查询</a></li>
             	<li><a href="manager_password.jsp" >修改密码</a></li>
             </ul> 	   					
         </div>
@@ -88,6 +89,18 @@
 									placeholder="任课教师编号" data-validate="required:请填写任课教师编号" />
 							</div>
 						</div>
+						
+						<div class="form-group">
+							<div class="label">
+								<label for="sname">任课教师姓名：</label>
+							</div>
+							<div class="field">
+								<input type="text" class="input" id="tname"
+									name="tname" size="30" style="width: 150px"
+									placeholder="任课教师姓名" data-validate="required:请填写任课教师姓名" />
+							</div>
+						</div>
+						
 						<div class="form-group">
 							<div class="label">
 								<label for="sname">开课班级：</label>

@@ -45,6 +45,7 @@
             	<li><a href="search_student_area.jsp">查询学生信息</a></li>
             	<li><a href="search_techer.jsp" >查询老师信息</a></li>
             	<li  ><a href="search_class.jsp" >查询班级信息</a></li>
+            	<li ><a href="search_course.jsp" class="icon-search">课程查询</a></li>
             	<li><a href="manager_password.jsp">修改密码</a></li>
             </ul> 
 			</div>

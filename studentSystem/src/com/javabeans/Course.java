@@ -5,11 +5,20 @@ public class Course {
 	private String cno;//课程编号
 	private String cname;//课程名称
 	private String tno;//教师编号
+	private String tname;//教师姓名
 	private String term;//学期
 	private int ctime;//学时
 	private String exam;//考查方式
 	private int credit;//学分
 	private String classNo;//班级编号
+	private Integer checked;
+	private String sno;
+	public String getSno() {
+		return sno;
+	}
+	public void setSno(String sno) {
+		this.sno = sno;
+	}
 	public String getCcno() {
 		return cno;
 	}
@@ -28,6 +37,23 @@ public class Course {
 	public void setTno(String tno) {
 		this.tno = tno;
 	}
+	
+	
+	public Integer getChecked() {
+		return checked;
+	}
+	public void setChecked(int checked) {
+		this.checked = checked;
+	}
+	
+	
+	public String getTname() {
+		return tname;
+	}
+	public void setTname(String tname) {
+		this.tname = tname;
+	}
+	
 	public String getCterm() {
 		return term;
 	}

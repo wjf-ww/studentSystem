@@ -116,7 +116,166 @@ public class UserDao{
 			dbUtil.close(null,pstmt, conn);
 		}
 	}
+	// 查询课程信息
+		public ArrayList<Course> findTeacherCourse(String tno,String tname,String cno) {
+			String sql =" SELECT * FROM a_course ";
+			
+			
+			if(tno != null && tno != ""){
+				sql = "SELECT * FROM a_course where tno = ?";
+			}else if (tno != null && tno != "" && (tname != null && tname != "")){
+				sql = "SELECT * FROM a_course where tno = ? and tname = ?";
+			}else if (tno != null && tno != "" && (tname != null && tname != "") && (cno != null && cno != "")){
+				sql = "SELECT * FROM a_course where tno = ? and tname = ? and classno = ?";
+			}else if((tno != null && tno != "") && (cno != null && cno != "")){
+				sql = "SELECT * FROM a_course where tno = ?  and classno = ?";
+			}else if(tname != null && tname != ""){
+				sql = "SELECT * FROM a_course where tname = ?";
+			}else if((tname != null && tname != "") && (cno != null && cno != "")){
+				sql = "SELECT * FROM a_course where tname = ? and classno = ?";
+			}else if(cno != null && cno != ""){
+				sql = "SELECT * FROM a_course where classno = ?";
+			}
+			
+			try {
+				conn = dbUtil.getConnection();
+				pstmt = conn.prepareStatement(sql);
 
+				if(tno != null && tno != ""){
+		
+					pstmt.setString(1, tno);
+				}else if (tno != null && tno != "" && (tname != null && tname != "")){
+				
+					pstmt.setString(1, tno);
+					pstmt.setString(2, tname);
+				}else if (tno != null && tno != "" && (tname != null && tname != "") && (cno != null && cno != "")){
+					
+					pstmt.setString(1, tno);
+					pstmt.setString(2,tname);
+					pstmt.setString(3, cno);
+				}else if((tno != null && tno != "") && (cno != null && cno != "")){
+					
+					pstmt.setString(1, tno);
+					pstmt.setString(2, cno);
+				}else if(tname != null && tname != ""){
+					
+					pstmt.setString(1, tname);
+				}else if((tname != null && tname != "") && (cno != null && cno != "")){
+					
+					pstmt.setString(1, tname);
+					pstmt.setString(2, cno);
+				}else if(cno != null && cno != ""){
+					
+					pstmt.setString(1, cno);
+				}
+				
+				
+				rst = pstmt.executeQuery();
+				
+				ArrayList<Course> courseList = new ArrayList<>();
+				while (rst.next()) {
+					Course course = new Course();
+					course.setCcname(rst.getString("cname"));
+					course.setCcno(rst.getString("cno"));
+					course.setCcredit(rst.getInt("credit"));
+					course.setCexam(rst.getString("exam"));
+					course.setCterm(rst.getString("term"));
+					course.setCtime(rst.getInt("ctime"));
+					course.setTno(rst.getString("tno"));
+					course.setTname(rst.getString("tname"));
+					
+					courseList.add(course);
+				}
+				return courseList;
+				
+			} catch (SQLException se) {
+				se.printStackTrace();
+				return null;
+			}finally{
+				dbUtil.close(rst,pstmt, conn);
+			}
+		}
+		
+		//学生报名
+		public ArrayList<Course> findStudentCourse(String tno,String tname,String cno) {
+			String sql =" SELECT * FROM a_v_student_course ";
+			
+			if(tno != null && tno != ""){
+				sql = "SELECT c.* FROM a_v_student_course where tno = ?";
+			}else if (tno != null && tno != "" && (tname != null && tname != "")){
+				sql = "SELECT c.* FROM a_v_student_course where tno = ? and tname = ?";
+			}else if (tno != null && tno != "" && (tname != null && tname != "") && (cno != null && cno != "")){
+				sql = "SELECT c.* FROM a_v_student_course where tno = ? and tname = ? and classno = ?";
+			}else if((tno != null && tno != "") && (cno != null && cno != "")){
+				sql = "SELECT c.* FROM a_v_student_course where tno = ?  and classno = ?";
+			}else if(tname != null && tname != ""){
+				sql = "SELECT c.* FROM a_v_student_course where tname = ?";
+			}else if((tname != null && tname != "") && (cno != null && cno != "")){
+				sql = "SELECT c.* FROM a_v_student_course where tname = ? and classno = ?";
+			}else if(cno != null && cno != ""){
+				sql = "SELECT c.* FROM a_v_student_course where classno = ?";
+			}
+			
+			try {
+				conn = dbUtil.getConnection();
+				pstmt = conn.prepareStatement(sql);
+
+				if(tno != null && tno != ""){
+		
+					pstmt.setString(1, tno);
+				}else if (tno != null && tno != "" && (tname != null && tname != "")){
+				
+					pstmt.setString(1, tno);
+					pstmt.setString(2, tname);
+				}else if (tno != null && tno != "" && (tname != null && tname != "") && (cno != null && cno != "")){
+					
+					pstmt.setString(1, tno);
+					pstmt.setString(2,tname);
+					pstmt.setString(3, cno);
+				}else if((tno != null && tno != "") && (cno != null && cno != "")){
+					
+					pstmt.setString(1, tno);
+					pstmt.setString(2, cno);
+				}else if(tname != null && tname != ""){
+					
+					pstmt.setString(1, tname);
+				}else if((tname != null && tname != "") && (cno != null && cno != "")){
+					
+					pstmt.setString(1, tname);
+					pstmt.setString(2, cno);
+				}else if(cno != null && cno != ""){
+					
+					pstmt.setString(1, cno);
+				}
+				
+				
+				rst = pstmt.executeQuery();
+				
+				ArrayList<Course> courseList = new ArrayList<>();
+				while (rst.next()) {
+					Course course = new Course();
+					course.setCcname(rst.getString("cname"));
+					course.setCcno(rst.getString("cno"));
+					course.setCcredit(rst.getInt("credit"));
+					course.setCexam(rst.getString("exam"));
+					course.setCterm(rst.getString("term"));
+					course.setCtime(rst.getInt("ctime"));
+					course.setTno(rst.getString("tno"));
+					course.setTname(rst.getString("tname"));
+					course.setChecked(rst.getInt("checked"));
+					course.setClassNo(rst.getString("classno"));
+					course.setSno(rst.getString("sno"));
+					courseList.add(course);
+				}
+				return courseList;
+				
+			} catch (SQLException se) {
+				se.printStackTrace();
+				return null;
+			}finally{
+				dbUtil.close(rst,pstmt, conn);
+			}
+		}
 	
 	//删除班级信息
 	public boolean deleteClass(String cno) {
@@ -138,18 +297,19 @@ public class UserDao{
 	//添加课程信息
 	public boolean addCourse(Course course) {
 		String sql = "INSERT INTO a_course"
-				+ " VALUES(?,?,?,?,?,?,?,?)";
+				+ " VALUES(?,?,?,?,?,?,?,?,?)";
 		try {
 			conn = dbUtil.getConnection();
 		    pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, course.getCcno());
 			pstmt.setString(2, course.getCcname());
-			pstmt.setString(3, course.getTno());
-			pstmt.setString(4, course.getCterm());
-			pstmt.setInt(5, course.getCtime());
-			pstmt.setString(6, course.getCexam());
-			pstmt.setInt(7, course.getCcredit());
-			pstmt.setString(8, course.getClassNo());
+			pstmt.setString(3, course.getTname());
+			pstmt.setString(4, course.getTno());
+			pstmt.setString(5, course.getCterm());
+			pstmt.setInt(6, course.getCtime());
+			pstmt.setString(7, course.getCexam());
+			pstmt.setInt(8, course.getCcredit());
+			pstmt.setString(9, course.getClassNo());
 			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException se) {
@@ -159,6 +319,50 @@ public class UserDao{
 			dbUtil.close(null,pstmt, conn);
 		}
 	}
+	
+	//添加选课信息
+		public boolean addStudentCourse(StudentCourse course) {
+			String sql = "INSERT INTO a_stu_course"
+					+ " VALUES(?,?,?,?)";
+			try {
+				conn = dbUtil.getConnection();
+			    pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, course.getSno());
+				pstmt.setString(2, course.getClassno());
+				pstmt.setString(3, course.getCno());
+				pstmt.setInt(4, course.getChecked());
+				pstmt.executeUpdate();
+				return true;
+			} catch (SQLException se) {
+				se.printStackTrace();
+				return false;
+			}finally{
+				dbUtil.close(null,pstmt, conn);
+			}
+		}
+		
+		public boolean addStuScore(Score score){
+			String sql ="INSERT INTO `a_score`(`sno`, `sname`, `term`, `cno`, `cname`,  `tno`, `tname`, `checked`) VALUES (?,?,?,?,?,?,?,?) ";
+			try {
+				conn = dbUtil.getConnection();
+			    pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, score.getSno());
+				pstmt.setString(2, score.getSname());
+				pstmt.setString(3, score.getTerm());
+				pstmt.setString(4, score.getCno());
+				pstmt.setString(5, score.getCname());
+				pstmt.setString(6, score.getTno());
+				pstmt.setString(7, score.getTname());
+				pstmt.setInt(8, 0);
+				pstmt.executeUpdate();
+				return true;
+			} catch (SQLException se) {
+				se.printStackTrace();
+				return false;
+			}finally{
+				dbUtil.close(null,pstmt, conn);
+			}
+		}
 	
 	//查询课程信息
 	public ArrayList<Course> getCourses(){

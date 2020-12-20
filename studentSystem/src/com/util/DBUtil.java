@@ -8,9 +8,9 @@ import java.sql.SQLException;
 
 public class DBUtil {
 
-	private String dbUrl = "jdbc:mysql://localhost:3306/cjglxt?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
+	private String dbUrl = "jdbc:mysql://localhost:3306/sys?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
 	private String dbUser = "root";
-	private String dbPassword = "123456";
+	private String dbPassword = "root";
 	private String jdbcName = "com.mysql.cj.jdbc.Driver";
 	private Connection connection = null;
 	public Connection getConnection(){

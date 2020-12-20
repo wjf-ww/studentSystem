@@ -66,6 +66,9 @@ public class LoginServlet extends HttpServlet {
 			}finally {
 				dbUtil.close(rst,pstmt,connection);
 			}
+			
+			ArrayList<String> termList = dao.search_course_term();
+			request.getSession().setAttribute("courseTermList", termList);
 		}
 		
 				
