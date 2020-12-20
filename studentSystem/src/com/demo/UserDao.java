@@ -342,7 +342,7 @@ public class UserDao{
 		}
 		//删除学生选课信息
 				public boolean deleteStudentCourse(StudentCourse course) {
-					String sql = "DELETE a_stu_course where sno = ? AND classno =? AND cno =?";
+					String sql = "DELETE FROM a_stu_course where sno = ? AND classno =? AND cno =?";
 					try {
 						conn = dbUtil.getConnection();
 					    pstmt = conn.prepareStatement(sql);
@@ -384,7 +384,7 @@ public class UserDao{
 		
 		//学生退课后 在成绩表中 删除信息
 				public boolean deleteStuScore(Score score){
-					String sql ="DELETE `a_score` where sno=? AND cno = ? AND term = ?  ";
+					String sql ="DELETE FROM `a_score` where sno=? AND cno = ? AND term = ?  ";
 					try {
 						conn = dbUtil.getConnection();
 					    pstmt = conn.prepareStatement(sql);
