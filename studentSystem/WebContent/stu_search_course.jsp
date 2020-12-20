@@ -117,8 +117,18 @@
 										<%
 											if(course.getChecked() != null && course.getChecked()==1 && course.getSno().equals(student.getSno())) {
 										%>
-											<form action="CourseDetailServlet" method="post" >
-											<button class="button bg-main" type="submit">退课</button>
+											<form action="DeleteStudentCourseServlet" method="post" >
+												<input type = "hidden" name="sno" value = "<%=student.getSno() %>">
+												<input type = "hidden" name="sname" value = "<%=student.getSname() %>">
+												<input type = "hidden" name="scno" value = "<%=student.getScno() %>">
+												<input type = "hidden" name="cno" value = "<%=course.getClassNo() %>">
+												
+												<input type = "hidden" name="ccno" value = "<%=course.getCcno() %>">
+												<input type = "hidden" name="ccname" value = "<%=course.getCcname() %>">
+												<input type = "hidden" name="term" value = "<%=course.getCterm() %>">
+												<input type = "hidden" name="tno" value = "<%=course.getTno() %>">
+												<input type = "hidden" name="tname" value = "<%=course.getTname() %>">
+												<button class="button bg-main" type="submit">退课</button>
 											</form>
 										<%} %>
 									

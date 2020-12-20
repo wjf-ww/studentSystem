@@ -320,7 +320,7 @@ public class UserDao{
 		}
 	}
 	
-	//添加选课信息
+	//添加学生选课信息
 		public boolean addStudentCourse(StudentCourse course) {
 			String sql = "INSERT INTO a_stu_course"
 					+ " VALUES(?,?,?,?)";
@@ -340,7 +340,25 @@ public class UserDao{
 				dbUtil.close(null,pstmt, conn);
 			}
 		}
-		
+		//删除学生选课信息
+				public boolean deleteStudentCourse(StudentCourse course) {
+					String sql = "DELETE a_stu_course where sno = ? AND classno =? AND cno =?";
+					try {
+						conn = dbUtil.getConnection();
+					    pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, course.getSno());
+						pstmt.setString(2, course.getClassno());
+						pstmt.setString(3, course.getCno());
+						pstmt.executeUpdate();
+						return true;
+					} catch (SQLException se) {
+						se.printStackTrace();
+						return false;
+					}finally{
+						dbUtil.close(null,pstmt, conn);
+					}
+				}
+		//学生选课后 在成绩表中 添加信息
 		public boolean addStuScore(Score score){
 			String sql ="INSERT INTO `a_score`(`sno`, `sname`, `term`, `cno`, `cname`,  `tno`, `tname`, `checked`) VALUES (?,?,?,?,?,?,?,?) ";
 			try {
@@ -363,6 +381,25 @@ public class UserDao{
 				dbUtil.close(null,pstmt, conn);
 			}
 		}
+		
+		//学生退课后 在成绩表中 删除信息
+				public boolean deleteStuScore(Score score){
+					String sql ="DELETE `a_score` where sno=? AND cno = ? AND term = ?  ";
+					try {
+						conn = dbUtil.getConnection();
+					    pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1,score.getSno());
+						pstmt.setString(2, score.getCno());
+						pstmt.setString(3, score.getTerm());
+						pstmt.executeUpdate();
+						return true;
+					} catch (SQLException se) {
+						se.printStackTrace();
+						return false;
+					}finally{
+						dbUtil.close(null,pstmt, conn);
+					}
+				}
 	
 	//查询课程信息
 	public ArrayList<Course> getCourses(){
